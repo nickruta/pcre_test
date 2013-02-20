@@ -17,8 +17,11 @@
 			$subject<br />is ";
 			
 			// test :
-			if (preg_match ($pattern, $subject) ) {
+			if (preg_match_all ($pattern, $subject, $matches) ) {
 				echo 'TRUE!</p>';
+				
+				// print the matches
+				echo '<pre>' . print_r($matches, 1) . '</pre>';
 				
 			} else {
 				echo 'FALSE!</p>';
@@ -30,7 +33,7 @@
 		<p>Regular Expression Pattern:
 			<input type="text" name="pattern" value="<?php if (isset($pattern)) echo htmlentities($pattern); ?>" size="40" />
 			(include the delimiters)</p>
-		<p>Test Subject: <input type="text" name="subject" value="<?php if (isset ($subject)) echo htmlentities($subject); ?>" size="40" /></p>
+		<p>Test Subject:<textarea name="subject" rows="5" cols="40"><?php if (isset($subject)) echo htmlentities($subject); ?></textarea></p>
 		<input type="submit" name="submit" value="Test!" />
 	</form>
 
